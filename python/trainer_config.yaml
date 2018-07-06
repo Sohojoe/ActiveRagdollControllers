@@ -21,7 +21,7 @@ default:
     curiosity_strength: 0.01
     curiosity_enc_size: 128
 
-Controller102Brain:
+Controller103Brain:
     beta: 1.0e-2
     epsilon: 0.20
     gamma: 0.99
