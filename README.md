@@ -2,6 +2,18 @@
 Research into controllers for 2d and 3d Active Ragdolls (using MujocoUnity+ml_agents)
 
 
+
+### Controller003
+* **Type:** Continuous 2D
+* **Actions:** Forward / Backwards
+* **Mujoco Model:** DeepMindHopper
+* **Hypostheis**: Use an adversarial hierarchical trained agent as the controller which gets the inverse reward of the locomation agent on a slower time step. The idea is that it will push the locomoation agent to focus on its weakest areas. 
+* **Outcome:** 
+  * **FAIL** - training is too heavily influenced by the number of steps the controller agent takes between decisions; 
+  * ... it maybe better to train a seperate agent on hyper-parms (i.e. meta learning) 
+  * ... having read more about these approaches (MAML, RL2, etc) it would be better to move to a Discreate conrtroller as ml-agents LSTM does not work well with Continuous actions.
+
+
 ### Controller002
 * **Type:** Continuous 2D
 * **Actions:** Forward / Backwards
