@@ -20,9 +20,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4132043790615226}
   - component: {fileID: 114269483692438478}
-  - component: {fileID: 114662525802350934}
+  - component: {fileID: 114687413890486908}
+  - component: {fileID: 114801126795878746}
   m_Layer: 10
-  m_Name: Controller001
+  m_Name: Controller002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -61,7 +62,7 @@ MonoBehaviour:
   OnGenerateApplyRandom: 0.005
   DefaultDensity: 1000
   MotorScale: 1.5
---- !u!114 &114662525802350934
+--- !u!114 &114687413890486908
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -69,7 +70,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1197355327420184}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ff73cf07958050459fd80cba22fd236, type: 3}
+  m_Script: {fileID: 11500000, guid: f26c83b6220f44ad3aa6222233cc5acb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   brain: {fileID: 0}
@@ -95,3 +96,22 @@ MonoBehaviour:
   TargetVelocityX: 0
   CurrentVelocityX: 0
   StepsUntilNextTarget: 0
+--- !u!114 &114801126795878746
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1197355327420184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d404aba908694c8a99b2a135feb0f11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  brain: {fileID: 0}
+  agentParameters:
+    agentCameras: []
+    maxStep: 4000
+    resetOnDone: 1
+    onDemandDecision: 0
+    numberOfActionsBetweenDecisions: 4
+  AxisX: 0
