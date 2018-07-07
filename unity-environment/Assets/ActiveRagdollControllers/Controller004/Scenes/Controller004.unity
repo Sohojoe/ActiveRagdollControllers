@@ -237,7 +237,7 @@ MonoBehaviour:
   m_Name: (Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)
   m_EditorClassIdentifier: 
   broadcast: 1
-  graphModel: {fileID: 4900000, guid: 287e8be7d9a2b3940a8f01b7a592d494, type: 3}
+  graphModel: {fileID: 4900000, guid: 93906ac5ef38c43c59855347cd2967c0, type: 3}
   graphScope: 
   graphPlaceholders: []
   BatchSizePlaceholderName: batch_size
@@ -620,7 +620,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   brainParameters:
-    vectorObservationSize: 33
+    vectorObservationSize: 34
     numStackedVectorObservations: 1
     vectorActionSize: 4
     cameraResolutions: []
@@ -630,7 +630,7 @@ MonoBehaviour:
     - 
     - 
     vectorActionSpaceType: 1
-  brainType: 3
+  brainType: 0
   CoreBrains:
   - {fileID: 359776234}
   - {fileID: 424960601}
@@ -717,6 +717,12 @@ MonoBehaviour:
     value: 1
   - key: 275
     value: 2
+  - key: 32
+    value: 3
+  - key: 101
+    value: 4
+  - key: 113
+    value: 5
   defaultAction: 0
   brain: {fileID: 2030715178}
 --- !u!114 &1314657061

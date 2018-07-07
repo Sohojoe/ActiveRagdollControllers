@@ -17,33 +17,38 @@ public class Controller004InputDecision :  MonoBehaviour, Decision {
             memory.Add(0f);
             memory.Add(0f);
         }
-        var targetVelocityX = memory[1];
+        var action = (int) memory[1];
 
-        // // 101
-        // memory[0]--;
-        // if (memory[0] <= 0){
-        //     memory[0] = 400;
-        //     if (targetVelocityX == 0f)
-        //         targetVelocityX = (UnityEngine.Random.value >= .5f) ? 1f : -1f;
-        //     else
-        //         targetVelocityX = targetVelocityX == 1f ? -1f : 1f;
-        // }
-
-        // 102
         memory[0]--;
         if (memory[0] <= 0){
             var rnd = UnityEngine.Random.value;
-            if (targetVelocityX == 0f)
-                targetVelocityX = (rnd >= .9f) ? targetVelocityX : (rnd >= .45f) ? 1f : 2f;
-            else if (targetVelocityX == 1f)
-                targetVelocityX = (rnd >= .4f) ? targetVelocityX : (rnd >= .2f) ? 2f : 0f;
-            else
-                targetVelocityX = (rnd >= .4f) ? targetVelocityX : (rnd >= .2f) ? 1f : 0f;
+            bool repeateAction = false;
+            if (action != 0 && action != 3 && rnd >.6f)
+                repeateAction = true;
+            if (!repeateAction)
+            {
+                rnd = UnityEngine.Random.value;
+                if (rnd <= .4f)
+                    action = 1; // right
+                else if (rnd <= .8f)
+                    action = 2; // left
+                else
+                    action = 0; // stand
+                rnd = UnityEngine.Random.value;
+                if (rnd >= .75)
+                    action += 3; // add jump
+            }
+            // if (action == 0f)
+            //     action = (rnd >= .9f) ? action : (rnd >= .45f) ? 1f : 2f;
+            // else if (action == 1f)
+            //     action = (rnd >= .4f) ? action : (rnd >= .2f) ? 2f : 0f;
+            // else
+            //     action = (rnd >= .4f) ? action : (rnd >= .2f) ? 1f : 0f;
             memory[0] = 40 + (int) (UnityEngine.Random.value * 200);
-            memory[1] = targetVelocityX;
+            memory[1] = (float)action;
         }
 
-        return new float[1] { targetVelocityX };
+        return new float[1] { action };
     }
     public List<float> MakeMemory(
         List<float> vectorObs,

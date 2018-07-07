@@ -9,6 +9,7 @@ using MLAgents;
 public class Controller004Agent : MujocoAgent {
 
     public float TargetVelocityX;
+    public bool ShouldJump;
     public float CurrentVelocityX;
     public int StepsUntilNextTarget;
 
@@ -44,25 +45,6 @@ public class Controller004Agent : MujocoAgent {
 
     }
 
-    void ManageTargetStep(bool reset = false)
-    {
-        StepsUntilNextTarget--;
-        if (StepsUntilNextTarget <= 0 || reset){
-            StepsUntilNextTarget = 400;
-            //TargetVelocityX = UnityEngine.Random.value *2f - 1f;
-            if (TargetVelocityX == 0f)
-                TargetVelocityX = (UnityEngine.Random.value >= .5f) ? 1f : -1f;
-            else
-                TargetVelocityX = TargetVelocityX == 1f ? -1f : 1f;
-            // var rnd = UnityEngine.Random.value;
-            //if (rnd>=.5f)
-            //    TargetVelocityX = 1f;
-            //else
-            //    TargetVelocityX = -1f;
-
-        }
-    }
-
 
     public override void AgentOnDone()
     {
@@ -70,6 +52,7 @@ public class Controller004Agent : MujocoAgent {
     void ObservationsDefault()
     {
         TargetVelocityX = controllerAgent.AxisX;
+        ShouldJump = controllerAgent.Jump;
         if (ShowMonitor) {
         }
         var pelvis = BodyParts["pelvis"];
@@ -85,6 +68,7 @@ public class Controller004Agent : MujocoAgent {
 
         AddVectorObs(TargetVelocityX);
         AddVectorObs(CurrentVelocityX);
+        AddVectorObs(ShouldJump);
     }
 
     float GetRewardOnEpisodeComplete()
@@ -92,38 +76,16 @@ public class Controller004Agent : MujocoAgent {
         return FocalPoint.transform.position.x;
     }
 
-    float StepRewardJump()
+    float GetRewardJump()
     {
-        float uprightBonus = GetForwardBonus("pelvis");
-        CurrentVelocityX = GetAverageVelocity("pelvis");
-        float velocityReward = 1f - (Mathf.Abs(TargetVelocityX - CurrentVelocityX) * 1.2f);
-        velocityReward = Mathf.Clamp(velocityReward, -1f, 1f);
-        float effort = GetEffort();
-        var effortPenality = 3e-1f * (float)effort;
-        var jointsAtLimitPenality = GetJointsAtLimitPenality() * 4;
         var foot = BodyParts["foot"];
         var footHeight = foot.transform.position.y;
         var jumpReward = 0f;
         if (SensorIsInTouch[0] == 0){
-            jumpReward += 1f;
+            //jumpReward += 1f;
             jumpReward += footHeight;
         }
-         
-        
-
-        var reward = 
-            jumpReward
-            +uprightBonus
-            // -heightPenality
-            -effortPenality
-            -jointsAtLimitPenality;
-        if (ShowMonitor) {
-            var hist = new []{reward, jumpReward, uprightBonus, -effortPenality, -jointsAtLimitPenality}.ToList();
-            Monitor.Log("rewardHist", hist.ToArray());
-        }
-        controllerAgent.LowerStepReward(CurrentVelocityX);
-
-        return reward;
+        return jumpReward;
     }
 
     float StepRewardController101()

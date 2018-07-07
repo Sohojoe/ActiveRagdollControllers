@@ -6,6 +6,7 @@ using System;
 
 public class Controller004InputAgent : Agent {
     public float AxisX;
+    public bool Jump;
     float lastLowerStepReward;
 
     List<float> actionEntropies = new List<float>();
@@ -31,12 +32,27 @@ public class Controller004InputAgent : Agent {
         {
             case 0:
                 AxisX = 0f;
+                Jump = false;
                 break;
             case 1:
-                AxisX = -1f;
+                AxisX = 1f;
+                Jump = false;
                 break;
             case 2:
+                AxisX = -1f;
+                Jump = false;
+                break;
+            case 3:
+                AxisX = 0f;
+                Jump = true;
+                break;
+            case 4:
                 AxisX = 1f;
+                Jump = true;
+                break;
+            case 5:
+                AxisX = -1f;
+                Jump = true;
                 break;
             default:
                 throw new NotImplementedException();
