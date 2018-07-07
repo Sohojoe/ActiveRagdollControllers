@@ -13,9 +13,11 @@ public class Controller004InputDecision :  MonoBehaviour, Decision {
         bool done,
         List<float> memory)
     {
-        var targetVelocityX = vectorObs[0];
-        if (memory.Count == 0)
+        if (memory.Count == 0) {
             memory.Add(0f);
+            memory.Add(0f);
+        }
+        var targetVelocityX = memory[1];
 
         // // 101
         // memory[0]--;
@@ -32,12 +34,13 @@ public class Controller004InputDecision :  MonoBehaviour, Decision {
         if (memory[0] <= 0){
             var rnd = UnityEngine.Random.value;
             if (targetVelocityX == 0f)
-                targetVelocityX = (rnd >= .9f) ? targetVelocityX : (rnd >= .45f) ? 1f : -1f;
-            else if (targetVelocityX > 0f)
-                targetVelocityX = (rnd >= .4f) ? targetVelocityX : (rnd >= .2f) ? -1f : 0f;
+                targetVelocityX = (rnd >= .9f) ? targetVelocityX : (rnd >= .45f) ? 1f : 2f;
+            else if (targetVelocityX == 1f)
+                targetVelocityX = (rnd >= .4f) ? targetVelocityX : (rnd >= .2f) ? 2f : 0f;
             else
                 targetVelocityX = (rnd >= .4f) ? targetVelocityX : (rnd >= .2f) ? 1f : 0f;
             memory[0] = 40 + (int) (UnityEngine.Random.value * 200);
+            memory[1] = targetVelocityX;
         }
 
         return new float[1] { targetVelocityX };

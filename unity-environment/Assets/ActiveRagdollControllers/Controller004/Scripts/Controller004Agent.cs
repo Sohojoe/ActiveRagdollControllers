@@ -27,6 +27,7 @@ public class Controller004Agent : MujocoAgent {
         Monitor.SetActive(true);
 
         StepRewardFunction = StepRewardController101;
+        // StepRewardFunction = StepRewardJump;
         TerminateFunction = TerminateOnNonFootHitTerrain;
         ObservationsFunction = ObservationsDefault;
         // OnTerminateRewardValue = -100f;
@@ -89,6 +90,40 @@ public class Controller004Agent : MujocoAgent {
     float GetRewardOnEpisodeComplete()
     {
         return FocalPoint.transform.position.x;
+    }
+
+    float StepRewardJump()
+    {
+        float uprightBonus = GetForwardBonus("pelvis");
+        CurrentVelocityX = GetAverageVelocity("pelvis");
+        float velocityReward = 1f - (Mathf.Abs(TargetVelocityX - CurrentVelocityX) * 1.2f);
+        velocityReward = Mathf.Clamp(velocityReward, -1f, 1f);
+        float effort = GetEffort();
+        var effortPenality = 3e-1f * (float)effort;
+        var jointsAtLimitPenality = GetJointsAtLimitPenality() * 4;
+        var foot = BodyParts["foot"];
+        var footHeight = foot.transform.position.y;
+        var jumpReward = 0f;
+        if (SensorIsInTouch[0] == 0){
+            jumpReward += 1f;
+            jumpReward += footHeight;
+        }
+         
+        
+
+        var reward = 
+            jumpReward
+            +uprightBonus
+            // -heightPenality
+            -effortPenality
+            -jointsAtLimitPenality;
+        if (ShowMonitor) {
+            var hist = new []{reward, jumpReward, uprightBonus, -effortPenality, -jointsAtLimitPenality}.ToList();
+            Monitor.Log("rewardHist", hist.ToArray());
+        }
+        controllerAgent.LowerStepReward(CurrentVelocityX);
+
+        return reward;
     }
 
     float StepRewardController101()

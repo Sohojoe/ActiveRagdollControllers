@@ -2,6 +2,7 @@ using UnityEngine;
 using MLAgents;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 public class Controller004InputAgent : Agent {
     public float AxisX;
@@ -25,15 +26,21 @@ public class Controller004InputAgent : Agent {
     }
     public override void AgentAction(float[] vectorAction, string textAction)
     {
-        var e = Mathf.Abs(AxisX - vectorAction[0]);
-        AxisX = vectorAction[0];
-        if (AxisX > 0.2f)
-            AxisX = 1f;
-        else if (AxisX < -0.2f)
-            AxisX = -1f;
-        else
-            AxisX = 0;
-        actionEntropies.Add(e);        
+        int action = (int)vectorAction[0];
+        switch (action)
+        {
+            case 0:
+                AxisX = 0f;
+                break;
+            case 1:
+                AxisX = -1f;
+                break;
+            case 2:
+                AxisX = 1f;
+                break;
+            default:
+                throw new NotImplementedException();
+        }
     }
 
     public void LowerStepReward(float stepReward)
