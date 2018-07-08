@@ -99,9 +99,11 @@ public class Controller004Agent : MujocoAgent {
         // var effortPenality = 1e-2f * (float)effort;
         var effortPenality = 3e-1f * (float)effort;
         var jointsAtLimitPenality = GetJointsAtLimitPenality() * 4;
+        var jumpBonus = ShouldJump ? GetRewardJump() : 0f;
 
         var reward = velocityReward
             +uprightBonus
+            +jumpBonus
             // -heightPenality
             -effortPenality
             -jointsAtLimitPenality;
