@@ -82,7 +82,7 @@ public class Controller004Agent : MujocoAgent {
         var footHeight = foot.transform.position.y;
         var jumpReward = 0f;
         if (SensorIsInTouch[0] == 0){
-            //jumpReward += 1f;
+            jumpReward += 1f;
             jumpReward += footHeight;
         }
         return jumpReward;
