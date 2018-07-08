@@ -23,7 +23,7 @@ public class Controller004InputDecision :  MonoBehaviour, Decision {
         if (memory[0] <= 0){
             var rnd = UnityEngine.Random.value;
             bool repeateAction = false;
-            if (action != 0 && action != 3 && rnd >.6f)
+            if (action != 0 && rnd >.6f)
                 repeateAction = true;
             if (!repeateAction)
             {
