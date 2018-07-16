@@ -98,17 +98,18 @@ public class Controller004Agent : MujocoAgent {
         float effort = GetEffort();
         // var effortPenality = 1e-2f * (float)effort;
         var effortPenality = 3e-1f * (float)effort;
-        var jointsAtLimitPenality = GetJointsAtLimitPenality() * 4;
+        //var jointsAtLimitPenality = GetJointsAtLimitPenality() * 4;
         var jumpBonus = ShouldJump ? GetRewardJump() : 0f;
 
         var reward = velocityReward
             +uprightBonus
             +jumpBonus
             // -heightPenality
-            -effortPenality
-            -jointsAtLimitPenality;
+            -effortPenality;
+            //;//-jointsAtLimitPenality;
         if (ShowMonitor) {
-            var hist = new []{reward, velocityReward, uprightBonus, -effortPenality, -jointsAtLimitPenality}.ToList();
+            //var hist = new []{reward, velocityReward, jumpBonus, uprightBonus, -effortPenality, -jointsAtLimitPenality}.ToList();
+            var hist = new []{reward, velocityReward, jumpBonus, uprightBonus, -effortPenality}.ToList();
             Monitor.Log("rewardHist", hist.ToArray());
         }
         controllerAgent.LowerStepReward(CurrentVelocityX);

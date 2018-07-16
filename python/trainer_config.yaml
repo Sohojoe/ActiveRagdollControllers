@@ -35,7 +35,7 @@ Controller004Brain:
     hidden_units: 90
     batch_size: 2048
     buffer_size: 10240
-    max_steps: 10e5
+    max_steps: 3e5
 
 Controller103Brain:
     beta: 1.0e-2
