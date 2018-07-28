@@ -1,42 +1,91 @@
-# ActiveRagdollControllers
-Research into controllers for 2d and 3d Active Ragdolls (using MujocoUnity+ml_agents)
+<img src="docs/images/unity-wide.png" align="middle" width="3000"/>
 
+# Unity ML-Agents (Beta)
 
+**Unity Machine Learning Agents** (ML-Agents) is an open-source Unity plugin 
+that enables games and simulations to serve as environments for training
+intelligent agents. Agents can be trained using reinforcement learning,
+imitation learning, neuroevolution, or other machine learning methods through
+a simple-to-use Python API. We also provide implementations (based on
+TensorFlow) of state-of-the-art algorithms to enable game developers
+and hobbyists to easily train intelligent agents for 2D, 3D and VR/AR games.
+These trained agents can be used for multiple purposes, including
+controlling NPC behavior (in a variety of settings such as multi-agent and
+adversarial), automated testing of game builds and evaluating different game
+design decisions pre-release. ML-Agents is mutually beneficial for both game
+developers and AI researchers as it provides a central platform where advances
+in AI can be evaluated on Unity’s rich environments and then made accessible
+to the wider research and game developer communities. 
 
-### Controller003
-* **Type:** Continuous 2D
-* **Actions:** Forward / Backwards
-* **Mujoco Model:** DeepMindHopper
-* **Hypostheis**: Use an adversarial hierarchical trained agent as the controller which gets the inverse reward of the locomation agent on a slower time step. The idea is that it will push the locomoation agent to focus on its weakest areas. 
-* **Outcome:** 
-  * **FAIL** - training is too heavily influenced by the number of steps the controller agent takes between decisions; 
-  * ... it maybe better to train a seperate agent on hyper-parms (i.e. meta learning) 
-  * ... having read more about these approaches (MAML, RL2, etc) it would be better to move to a Discreate conrtroller as ml-agents LSTM does not work well with Continuous actions.
+## Features
+* Unity environment control from Python
+* 10+ sample Unity environments
+* Support for multiple environment configurations and training scenarios
+* Train memory-enhanced Agents using deep reinforcement learning
+* Easily definable Curriculum Learning scenarios
+* Broadcasting of Agent behavior for supervised learning
+* Built-in support for Imitation Learning
+* Flexible Agent control with On Demand Decision Making
+* Visualizing network outputs within the environment
+* Simplified set-up with Docker
 
+## Documentation
 
-### Controller002
-* **Type:** Continuous 2D
-* **Actions:** Forward / Backwards
-* **Input:** Unity Axis input (left/right or a/d or joystick)
-* **Mujoco Model:** DeepMindHopper
-* **Hypostheis**: Use ml-agent (player + Heuristic) and unity input to create a player contoller .
-* **Outcome:** 
-  * Works - makes a simple 2d proof of concept of 2d active ragdoll using RL.
-  * I needed to use Discrete target velocities for stable training (-1,1,0) however it is continuous under player control. 
-  * Training was sensitive to the number of steps between chaning the input (see counter logic below)
-* **Notes:**
-  * Controller002InputBrain
-    * BrainType: Player = input is from player
-    * BrainType: Heuristic = input is from Controller002InputBrain.cs
-  * Controller002InputDecision.cs - 
-    * Waits until counter is 0 then:
-    * Takes random action and outputs AxisX as -1, 0, 1 (used as target velocity), then:
-    * Set counter random 40-240
-  * Controller002InputAgent.cs - 
+* For more information, in addition to installation and usage
+instructions, see our [documentation home](docs/Readme.md).
+* If you have
+used a version of ML-Agents prior to v0.4, we strongly recommend 
+our [guide on migrating from earlier versions](docs/Migrating.md).
 
-### Controller001
-* **Type:** Discrete 2D
-* **Actions:** Forward / Backwards
-* **Mujoco Model:** DeepMindHopper
-* **Hypostheis**: It should be simple to train a backwards / forwards by giving the agent a +1 / 1 velocity target which feeds the reward function.
-* **Outcome:** It worked - but was harder than expected to find good hyper-parms. Next, wrap this in a proper ml-agent controller and allow user input.
+## References
+
+We have published a series of blog posts that are relevant for ML-Agents:
+- Overviewing reinforcement learning concepts
+([multi-armed bandit](https://blogs.unity3d.com/2017/06/26/unity-ai-themed-blog-entries/)
+and [Q-learning](https://blogs.unity3d.com/2017/08/22/unity-ai-reinforcement-learning-with-q-learning/))
+- [Using Machine Learning Agents in a real game: a beginner’s guide](https://blogs.unity3d.com/2017/12/11/using-machine-learning-agents-in-a-real-game-a-beginners-guide/)
+- [Post](https://blogs.unity3d.com/2018/02/28/introducing-the-winners-of-the-first-ml-agents-challenge/) announcing the winners of our
+[first ML-Agents Challenge](https://connect.unity.com/challenges/ml-agents-1)
+- [Post](https://blogs.unity3d.com/2018/01/23/designing-safer-cities-through-simulations/)
+overviewing how Unity can be leveraged as a simulator to design safer cities.
+
+In addition to our own documentation, here are some additional, relevant articles:
+- [Unity AI - Unity 3D Artificial Intelligence](https://www.youtube.com/watch?v=bqsfkGbBU6k)
+- [A Game Developer Learns Machine Learning](https://mikecann.co.uk/machine-learning/a-game-developer-learns-machine-learning-intent/)
+- [Explore Unity Technologies ML-Agents Exclusively on Intel Architecture](https://software.intel.com/en-us/articles/explore-unity-technologies-ml-agents-exclusively-on-intel-architecture)
+
+## Community and Feedback
+
+ML-Agents is an open-source project and we encourage and welcome contributions.
+If you wish to contribute, be sure to review our 
+[contribution guidelines](CONTRIBUTING.md) and 
+[code of conduct](CODE_OF_CONDUCT.md).
+
+You can connect with us and the broader community
+through Unity Connect and GitHub:
+* Join our
+[Unity Machine Learning Channel](https://connect.unity.com/messages/c/035fba4f88400000)
+to connect with others using ML-Agents and Unity developers enthusiastic
+about machine learning. We use that channel to surface updates
+regarding ML-Agents (and, more broadly, machine learning in games).
+* If you run into any problems using ML-Agents, 
+[submit an issue](https://github.com/Unity-Technologies/ml-agents/issues) and
+make sure to include as much detail as possible.
+
+For any other questions or feedback, connect directly with the ML-Agents
+team at ml-agents@unity3d.com.
+
+## Translations
+
+To make Unity ML-Agents accessible to the global research and
+Unity developer communities, we're attempting to create and maintain
+translations of our documentation. We've started with translating a subset
+of the documentation to one language (Chinese), but we hope to continue
+translating more pages and to other languages. Consequently,
+we welcome any enhancements and improvements from the community.
+
+- [Chinese](docs/localized/zh-CN/)
+
+## License
+
+[Apache License 2.0](LICENSE)

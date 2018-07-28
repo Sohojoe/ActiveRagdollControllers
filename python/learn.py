@@ -1,4 +1,4 @@
-# # Unity ML-Agents Toolkit
+# # Unity ML Agents
 # ## ML-Agent Learning
 
 import logging
