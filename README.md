@@ -12,7 +12,7 @@ Research into controllers for 2d and 3d Active Ragdolls (using MujocoUnity+ml_ag
 ### Controller004
 ![Controller004](images/Controller004.13-10m.gif)
 * **Type:** Discrete 2D
-* **Build (MacOS)** [v0.004](https://github.com/Sohojoe/ActiveRagdollControllers/releases/tag/v0.004) **Playable**
+* **Build (MacOS):** [v0.004](https://github.com/Sohojoe/ActiveRagdollControllers/releases/tag/v0.004) **Playable**
 * **Actions:** No-op, Forward, Backwards, Jump, Jump+Forward, Jump+Backwards
 * **Controls:** Left arrow, Right arrow, Spacebar
 * **Mujoco Model:** DeepMindHopper
@@ -25,7 +25,7 @@ Research into controllers for 2d and 3d Active Ragdolls (using MujocoUnity+ml_ag
 ### Controller003
 ![Controller003](images/Controller003.gif)
 * **Type:** Continuous 2D
-* **Build (MacOS)** [v0.003](https://github.com/Sohojoe/ActiveRagdollControllers/releases/tag/v0.003)
+* **Build (MacOS):** [v0.003](https://github.com/Sohojoe/ActiveRagdollControllers/releases/tag/v0.003)
 * **Actions:** Forward / Backwards
 * **Mujoco Model:** DeepMindHopper
 * **Hypostheis**: Use an adversarial hierarchical trained agent as the controller which gets the inverse reward of the locomation agent on a slower time step. The idea is that it will push the locomoation agent to focus on its weakest areas. 
@@ -38,7 +38,7 @@ Research into controllers for 2d and 3d Active Ragdolls (using MujocoUnity+ml_ag
 ### Controller002
 ![Controller002](images/Controller002.gif)
 * **Type:** Continuous 2D
-* **Build (MacOS, Windows)** [v0.002](https://github.com/Sohojoe/ActiveRagdollControllers/releases/tag/v0.002)
+* **Build (MacOS, Windows):** [v0.002](https://github.com/Sohojoe/ActiveRagdollControllers/releases/tag/v0.002)
 * **Actions:** Forward / Backwards
 * **Input:** Unity Axis input (left/right or a/d or joystick)
 * **Mujoco Model:** DeepMindHopper
@@ -60,7 +60,7 @@ Research into controllers for 2d and 3d Active Ragdolls (using MujocoUnity+ml_ag
 ### Controller001
 ![Controller001](images/Controller001.gif)
 * **Type:** Discrete 2D
-* **Build (MacOS)** [v0.001](https://github.com/Sohojoe/ActiveRagdollControllers/releases/tag/v0.001)
+* **Build (MacOS):** [v0.001](https://github.com/Sohojoe/ActiveRagdollControllers/releases/tag/v0.001)
 * **Actions:** Forward / Backwards
 * **Mujoco Model:** DeepMindHopper
 * **Hypostheis**: It should be simple to train a backwards / forwards by giving the agent a +1 / 1 velocity target which feeds the reward function.
