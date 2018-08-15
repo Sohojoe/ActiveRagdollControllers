@@ -12,7 +12,7 @@ Research into controllers for 2d and 3d Active Ragdolls (using MujocoUnity+ml_ag
 ### Controller004
 ![Controller004](images/Controller004.13-10m.gif)
 * **Type:** Discrete 2D
-* **Build (MacOS)** TODO [v0.004](https://github.com/Sohojoe/ActiveRagdollControllers/releases/tag/v0.003) **Playable**
+* **Build (MacOS)** [v0.004](https://github.com/Sohojoe/ActiveRagdollControllers/releases/tag/v0.004) **Playable**
 * **Actions:** No-op, Forward, Backwards, Jump, Jump+Forward, Jump+Backwards
 * **Controls:** Left arrow, Right arrow, Spacebar
 * **Mujoco Model:** DeepMindHopper
