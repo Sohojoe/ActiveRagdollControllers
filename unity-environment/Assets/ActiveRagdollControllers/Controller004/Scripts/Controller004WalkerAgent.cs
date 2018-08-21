@@ -83,7 +83,7 @@ public class Controller004WalkerAgent : MujocoAgent {
         var leftFoot = BodyParts["left_foot"];
         var footHeight = Mathf.Min(rightFoot.transform.position.y, leftFoot.transform.position.y);
         var jumpReward = 0f;
-        if (SensorIsInTouch[0] == 0){
+        if (SensorIsInTouch[0] + SensorIsInTouch[1] == 0){
             jumpReward += 1f;
             jumpReward += footHeight;
         }
