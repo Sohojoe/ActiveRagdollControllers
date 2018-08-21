@@ -22,12 +22,8 @@ default:
     curiosity_enc_size: 128
 
 Controller004WalkerBrain:
-    # beta: 1.0e-2
-    epsilon: 0.20
-    gamma: 0.99
-    lambd: 0.95
-    learning_rate: 1.0e-3
-    num_epoch: 3
+    beta: 1.0e-2
+    # learning_rate: 1.0e-3
     time_horizon: 128
     summary_freq: 1000
     normalize: true
@@ -35,15 +31,11 @@ Controller004WalkerBrain:
     hidden_units: 90
     batch_size: 2048
     buffer_size: 10240
-    max_steps: 100e5    
+    max_steps: 100e5
 
 Controller004Brain:
     beta: 1.0e-2
-    epsilon: 0.20
-    gamma: 0.99
-    lambd: 0.95
-    learning_rate: 1.0e-3
-    num_epoch: 3
+    # learning_rate: 1.0e-3
     time_horizon: 128
     summary_freq: 1000
     normalize: true

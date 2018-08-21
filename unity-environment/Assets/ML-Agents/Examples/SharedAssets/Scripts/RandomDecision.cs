@@ -16,7 +16,7 @@ namespace MLAgents
             brainParameters =
                 gameObject.GetComponent<Brain>().brainParameters;
             actionSpaceType = brainParameters.vectorActionSpaceType;
-            actionSpaceSize = brainParameters.vectorActionSize;
+            actionSpaceSize = brainParameters.vectorActionSize[0];
         }
 
         public float[] Decide(
