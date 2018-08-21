@@ -9,14 +9,14 @@ public class Controller004InputAgent : Agent {
     public bool Jump;
     float lastLowerStepReward;
 
-    List<float> actionEntropies = new List<float>();
+    // List<float> actionEntropies = new List<float>();
     List<float> lowerRewards = new List<float>();
     List<float> myRewards = new List<float>();
 
     public override void AgentReset()
     {
         AxisX = 0f;
-        actionEntropies = new List<float>();
+        // actionEntropies = new List<float>();
         lowerRewards = new List<float>();
         myRewards = new List<float>();
     }
@@ -76,7 +76,7 @@ public class Controller004InputAgent : Agent {
         var maxStep = lowerAgent.agentParameters.maxStep / lowerAgent.agentParameters.numberOfActionsBetweenDecisions; 
         var earlyPenalty = maxStep - (lowerAgent.GetStepCount()/lowerAgent.agentParameters.numberOfActionsBetweenDecisions);
         earlyPenalty = Mathf.Clamp(earlyPenalty,0,maxStep-1);
-        var aveScore = myRewards.Average() * 1f;
+        // var aveScore = myRewards.Average() * 1f;
         AddReward(earlyPenalty);
         // if (actionEntropies.Count == 0)
         //     actionEntropies.Add(0f);

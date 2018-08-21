@@ -53,7 +53,7 @@ public class Controller003InputAgent : Agent {
         var maxStep = lowerAgent.agentParameters.maxStep / lowerAgent.agentParameters.numberOfActionsBetweenDecisions; 
         var earlyPenalty = maxStep - (lowerAgent.GetStepCount()/lowerAgent.agentParameters.numberOfActionsBetweenDecisions);
         earlyPenalty = Mathf.Clamp(earlyPenalty,0,maxStep-1);
-        var aveScore = myRewards.Average() * 1f;
+        // var aveScore = myRewards.Average() * 1f;
         AddReward(earlyPenalty);
         // if (actionEntropies.Count == 0)
         //     actionEntropies.Add(0f);
